@@ -5,6 +5,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 # import os
 import glob 
+import sys
 
 class sssDataset(Dataset):
     def __init__(self, path, transform=None):
@@ -30,7 +31,7 @@ class sssDataset(Dataset):
         return output
 
 if __name__ == '__main__':
-    path = '/home/yipingx/repos/FDD3412-project-glow/data/SeabedObjects-Ship-and-Airplane-dataset/sss'
+    path = sys.argv[1]
     image_size = 128
     batchsize = 32
 

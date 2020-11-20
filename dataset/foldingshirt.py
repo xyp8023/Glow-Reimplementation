@@ -80,7 +80,7 @@ if __name__ == '__main__':
         ]
     )
 
-    dataset = shirtDataset(path, transform=transform)
+    dataset = shirtDataset_train(path, transform=transform)
     loader = DataLoader(dataset, shuffle=True, batch_size=batchsize, num_workers=4)
     loader = iter(loader)
     data = next(loader)

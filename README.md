@@ -13,6 +13,8 @@ In this work, we have presented a re-implementation study of Glow based on the o
 * seaborn
 * PIL
 * tqdm
+* torchvision
+* matplotlib
 
 ## Random Sample Results
 

@@ -13,10 +13,10 @@ from torch.autograd import Variable, grad
 from torch.utils.data import DataLoader
 import torchvision
 from torchvision import datasets, transforms, utils
-from dataset import foldingshirt, sss
+from ..dataset import foldingshirt, sss
 
 
-from models.model import Glow
+from ..models.model import Glow
 import matplotlib.pyplot as plt
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -138,7 +138,6 @@ if __name__ == "__main__":
     batchsize = 256
     vislabel = True
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     n_bins = 2.0 ** n_bits
 

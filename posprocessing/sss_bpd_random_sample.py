@@ -13,9 +13,9 @@ from torch.autograd import Variable, grad
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms, utils
 
-from models.model import Glow
-from dataset.sss import sssDataset 
-from dataset.foldingshirt import shirtDataset_test
+from ..models.model import Glow
+from ..dataset.sss import sssDataset 
+from ..dataset.foldingshirt import shirtDataset_test
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 import matplotlib.pyplot as plt
 import torchvision
@@ -117,7 +117,8 @@ for row, temp in enumerate(temp_list):
     z_shapes = calc_z_shapes(n_channel, image_size, n_flow, n_block)
     for i in range(n_block):
         z = z_shapes[i]
-        z_sample.append((torch.randn(n_sample, *z) * temp).cuda())
+        z_sample.append((torch.randn(n_sample, *z) * temp).to(device))
+
 
     with torch.no_grad():
         image_hat = model_single.reverse(z_sample)

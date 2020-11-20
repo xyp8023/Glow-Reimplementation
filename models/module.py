@@ -2,6 +2,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 import math
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class ActNorm(nn.Module):
     def __init__(self, in_channel):
@@ -358,7 +359,7 @@ class MultiScaleBlock(nn.Module):
         
     @staticmethod
     def gaussian_log_p(x, mean, log_sd):
-        return -0.5 * torch.log(2 * torch.Tensor([math.pi])).cuda() - log_sd - 0.5 * (x - mean) ** 2 / torch.exp(2 * log_sd)
+        return -0.5 * torch.log(2 * torch.Tensor([math.pi])).to(device) - log_sd - 0.5 * (x - mean) ** 2 / torch.exp(2 * log_sd)
     
     @staticmethod
     def gaussian_sample(eps, mean, log_sd):

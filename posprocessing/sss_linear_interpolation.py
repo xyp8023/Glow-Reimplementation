@@ -6,15 +6,15 @@ from PIL import Image
 from math import log, sqrt, pi
 
 import argparse
-from dataset.foldingshirt import shirtDataset
-from dataset.sss import sssDataset
+from ..dataset.foldingshirt import shirtDataset
+from ..dataset.sss import sssDataset
 import torch
 from torch import nn, optim
 from torch.autograd import Variable, grad
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms, utils
-from utils.utils import linearInterpolate
-from models.model import Glow
+from ..utils.utils import linearInterpolate
+from ..models.model import Glow
 import sys 
 
 
@@ -81,7 +81,8 @@ def run(model):
 
             image = image / n_bins - 0.5
 
-            image = image.to(torch.device('cuda'))
+            image = image.to(device)
+
 
             log_p, logdet, z_sample = model.module(image)
             output = linearInterpolate(model_single, image[0].unsqueeze(0), image[1].unsqueeze(0), interpo_num=interpo_num)
