@@ -1,0 +1,17 @@
+# folder
+.vscode/*
+.idea/*
+data/*
+checkpoints/*
+outputs/*
+
+# file
+# *.sh
+*.pth
+*.zip
+*.mp4
+
+
+# else
+**/__pycache__
+*.DS_Store
